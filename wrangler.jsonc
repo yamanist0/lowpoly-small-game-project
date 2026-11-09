@@ -1,0 +1,13 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "neon-coast-online",
+  "main": "server/index.js",
+  "compatibility_date": "2026-11-09",
+  "assets": { "directory": "./dist", "binding": "ASSETS", "run_worker_first": ["/api/*", "/media/*", "/assets/*"] },
+  "durable_objects": { "bindings": [{ "name": "WORLD", "class_name": "World" }] },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["World"] }],
+  "d1_databases": [{ "binding": "DB", "database_name": "neon-coast-db", "database_id": "a1bcea0c-119d-4db0-ac94-693241e01ceb", "migrations_dir": "server/migrations" }],
+  "r2_buckets": [{ "binding": "MEDIA", "bucket_name": "neon-coast-assets" }],
+  "observability": { "enabled": true, "traces": { "enabled": true } }
+}
+

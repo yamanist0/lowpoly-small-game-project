@@ -1,0 +1,81 @@
+# Local builds, dependencies, tooling and credentials
+/node_modules/
+/dist/
+*.tsbuildinfo
+/.wrangler/
+.dev.vars*
+.env
+.env.*
+!.env.example
+*.log
+
+# Source archives and development-only exports stay on the workstation.
+/*.zip
+/assets/**/*
+!/assets/**/
+
+# Keep attribution alongside the assets that ship.
+!/assets/**/[Ll]icense.txt
+!/assets/**/[Cc]redits.txt
+!/assets/**/[Rr]eadme.txt
+
+# Runtime assets: direct imports and the Vite glob inputs in src/.
+!/assets/vehicles/All vehicles preview.fbx
+!/assets/people/source/people_freePack_webGl_ani.fbx
+!/assets/people/textures/people_pal.png
+!/assets/people/textures/people_pal_s20.png
+!/assets/kenney_emotes-pack/PNG/Vector/Style 1/emote_faceHappy.png
+!/assets/kenney_emotes-pack/PNG/Vector/Style 1/emote_laugh.png
+!/assets/kenney_emotes-pack/PNG/Vector/Style 1/emote_heart.png
+!/assets/kenney_emotes-pack/PNG/Vector/Style 1/emote_music.png
+!/assets/bank_interior/atm/scene.gltf
+!/assets/bank_interior/atm/scene.bin
+!/assets/bank_interior/bank_safe/scene.gltf
+!/assets/bank_interior/bank_safe/scene.bin
+!/assets/bank_interior/bank_safe/textures/Metal_metallicRoughness.png
+!/assets/bank_interior/bank_safe/textures/Metal_normal.jpeg
+!/assets/garden/scene.gltf
+!/assets/garden/scene.bin
+!/assets/garden/textures/Material.001_baseColor.png
+!/assets/garden/textures/Material.002_baseColor.png
+!/assets/guns/source/Guns.fbx
+!/assets/kenney_furniture-kit/Models/GLTF format/*.glb
+!/assets/kenney_mini-market/Models/GLB format/*.glb
+!/assets/floors/**/*_baseColor_1k.png
+!/assets/floors/**/*_basecolor_1k.png
+!/assets/walls/**/*_color_1k.png
+!/assets/walls/**/*_basecolor_1k.png
+!/assets/paintings/images/*.jpg
+!/assets/kenney_particle-pack/PNG (Transparent)/muzzle_01.png
+!/assets/kenney_particle-pack/PNG (Transparent)/spark_01.png
+!/assets/kenney_particle-pack/PNG (Transparent)/smoke_03.png
+!/assets/kenney_particle-pack/PNG (Transparent)/fire_01.png
+!/assets/kenney_ui-pack/Font/Kenney Future Narrow.ttf
+!/assets/water_spitesheet/waterE_spritesheet.png
+!/assets/water_spitesheet/water_spritesheet.png
+!/assets/kenney_crosshair-pack/PNG/Glow/crosshair-010.png
+!/assets/kenney_crosshair-pack/PNG/Outline/crosshair-010.png
+!/assets/kenney_crosshair-pack/PNG/Outline/crosshair-016.png
+!/assets/kenney_crosshair-pack/PNG/Outline/crosshair-020.png
+!/assets/kenney_crosshair-pack/PNG/Outline/crosshair-028.png
+!/assets/kenney_crosshair-pack/PNG/Outline/crosshair-031.png
+!/assets/kenney_crosshair-pack/PNG/Outline/crosshair-032.png
+!/assets/kenney_crosshair-pack/PNG/Outline/crosshair-034.png
+!/assets/kenney_crosshair-pack/PNG/Outline/crosshair-047.png
+!/assets/kenney_crosshair-pack/PNG/Outline/crosshair-051.png
+!/assets/grass/patern_1_basecolor.png
+!/assets/grass_with_rocks_01_1k/grass_with_rocks_01_color_1k.png
+!/assets/gravel/ground_with_rocks_03_color_1k.png
+!/assets/cliff_rocks_08_1k/cliff_rocks_08_baseColor_1k.png
+!/assets/wild_rock/cliff_rocks_07_basecolor_1k.png
+!/assets/bench/bench.fbx
+!/assets/bank/source/Banca.fbx
+!/assets/bank/textures/lowpoly_tex-2.png
+!/assets/bush/Bush_temp_climate/Textures/T_Bush_temp_climate.png
+!/assets/bush/Bush_temp_climate/Fbx/*.fbx
+!/assets/nature/**/*.fbx
+!/assets/shops/generated/*.glb
+!/assets/kenney_city-kit-commercial_*/Models/GLB format/*.glb
+!/assets/kenney_city-kit-roads/Models/GLB format/*.glb
+!/assets/kenney_city-kit-suburban_*/Models/GLB format/*.glb
+!/assets/kenney_city-kit-industrial_*/Models/GLB format/*.glb

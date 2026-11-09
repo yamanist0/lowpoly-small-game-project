@@ -1,0 +1,20 @@
+@font-face{font-family:Kenney;src:url('../assets/kenney_ui-pack/Font/Kenney Future Narrow.ttf') format('truetype');font-display:swap}
+.game-hud{--ink:#f7f9e9;--dim:#b5c9bd;position:fixed;inset:0;z-index:10;pointer-events:none;color:var(--ink);font-family:Kenney,Arial,sans-serif;letter-spacing:.06em;text-shadow:0 2px 3px #122328b8;user-select:none}
+.hud-status{position:absolute;top:90px;right:26px;width:196px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:11px 12px;align-items:end;text-align:right}
+.hud-caption{display:block;font:700 9px/1 Arial,sans-serif;letter-spacing:.15em;color:var(--dim);margin-bottom:5px}
+.hud-money{min-width:0}.hud-money strong{display:block;font-size:27px;line-height:1;color:#ecf9dd;font-variant-numeric:tabular-nums;white-space:nowrap}
+.hud-wanted{align-self:end}.hud-stars{display:flex;gap:1px}.hud-stars svg{width:14px;height:14px;fill:#182c34a6;stroke:#edf4d8a8;stroke-width:1.4}.hud-stars svg.active{fill:#ffd478;stroke:#fff1b2}
+.hud-meter{grid-column:1/-1}.hud-meter-head{display:flex;justify-content:space-between;align-items:center;font-size:11px;line-height:1;margin-bottom:5px}.hud-meter-head kbd{font:700 8px/1 Arial,sans-serif;color:#c4dedb;letter-spacing:.05em;margin-left:4px}.hud-track{height:8px;background:#142d30c9;border:1px solid #ecf7dd9c;border-radius:2px;padding:1px;box-shadow:0 2px 5px #1a2c2b70}.hud-fill{height:100%;transform-origin:left;transition:transform .18s ease-out;background:#d16a58}.dash .hud-fill{background:#83dbe2}.low-health .health .hud-fill{background:#ed493b}
+.hud-map-wrap{position:absolute;left:24px;bottom:23px}.hud-map{position:relative;width:166px;height:166px;overflow:hidden;border:3px solid #e9efdf;border-radius:8px;background:#839b7f;box-shadow:0 3px 12px #10282b80}.hud-map canvas{display:block;width:100%;height:100%}.hud-north{position:absolute;top:5px;left:50%;transform:translateX(-50%);color:#24393a;font:700 10px/1 Arial,sans-serif;text-shadow:0 1px 2px #fff}.hud-map-label{display:block;margin-top:7px;color:#fff;font:700 9px/1 Arial,sans-serif;letter-spacing:.16em}
+@media(max-width:600px){.hud-status{top:74px;right:14px;width:150px;gap:8px}.hud-money strong{font-size:22px}.hud-stars svg{width:12px;height:12px}.hud-map-wrap{left:14px;bottom:14px}.hud-map{width:120px;height:120px}.hud-map-label{font-size:8px}}
+@media(prefers-reduced-motion:reduce){.hud-fill{transition:none}}
+
+.hud-district{position:absolute;top:25px;left:50%;transform:translateX(-50%);max-width:calc(100vw - 440px);overflow:hidden;text-overflow:ellipsis;white-space:pre-line;text-align:center;font-size:18px;color:#fff;letter-spacing:.05em} 
+@media(max-width:600px){.hud-district{top:16px;left:50%;transform:translateX(-50%);max-width:calc(100vw - 320px);text-align:center;font-size:14px}}
+
+@media(max-width:400px){.hud-district{max-width:calc(100vw - 260px);font-size:12px}}
+
+.hud-prompt{position:absolute;left:50%;bottom:28px;transform:translateX(-50%);padding:8px 12px;background:#183437df;border:1px solid #d6eee3a6;border-radius:4px;color:#fff;font:700 11px/1.2 Arial,sans-serif;letter-spacing:.08em;white-space:nowrap}.hud-prompt[hidden]{display:none}
+@media(max-width:600px){.hud-prompt{bottom:18px;font-size:9px;padding:7px 9px}}
+
+.shield .hud-fill{background:#8ebaff}

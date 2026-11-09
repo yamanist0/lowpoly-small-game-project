@@ -1,0 +1,15 @@
+CREATE TABLE IF NOT EXISTS players (
+ id TEXT PRIMARY KEY,
+ name TEXT NOT NULL,
+ token_hash TEXT NOT NULL UNIQUE,
+ money INTEGER NOT NULL DEFAULT 500,
+ inventory TEXT NOT NULL DEFAULT '{}',
+ updated_at INTEGER NOT NULL
+);
+CREATE TABLE IF NOT EXISTS cities (
+ ix INTEGER NOT NULL,
+ iz INTEGER NOT NULL,
+ owner_id TEXT NOT NULL REFERENCES players(id),
+ PRIMARY KEY (ix, iz)
+);
+CREATE INDEX IF NOT EXISTS cities_owner ON cities(owner_id);

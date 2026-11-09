@@ -1,0 +1,6 @@
+.combat-reticle{position:fixed;z-index:30;left:0;top:0;width:38px;height:38px;transform:translate(-50%,-50%);pointer-events:none;filter:drop-shadow(0 1px 2px #102d37)}
+.combat-reticle[hidden],.combat-reward[hidden]{display:none}
+.combat-reward{position:fixed;z-index:15;right:235px;top:96px;color:#bdf7b6;font:800 18px/1 system-ui,sans-serif;letter-spacing:.04em;text-shadow:0 2px 3px #162c26;pointer-events:none}
+.combat-hint{position:fixed;z-index:12;top:24px;left:24px;padding:7px 10px;background:#183437c7;border:1px solid #d6eee36b;border-radius:4px;color:#f4f9ed;font:700 10px/1.3 Arial,sans-serif;letter-spacing:.07em;pointer-events:none}
+.combat-hint[hidden]{display:none}
+@media(max-width:600px){.combat-hint{top:12px;left:12px;font-size:8px}.combat-reward{right:174px;top:80px;font-size:14px}}
