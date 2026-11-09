@@ -18,4 +18,5 @@ async function worker(){while(!failed){const index=next++;if(index>=files.length
  let result;for(let attempt=0;attempt<4;attempt++){result=await new Promise((resolve,reject)=>{const child=spawn(process.execPath,args,{stdio:['ignore','ignore','pipe']});let error='';child.stderr.on('data',chunk=>error+=chunk);child.on('error',reject);child.on('close',code=>resolve({code,error}));});if(result.code===0)break;await new Promise(resolve=>setTimeout(resolve,1000*(attempt+1)));}
  if(result.code!==0){failed=true;console.error(`Upload failed: ${file.name}\n${result.error}`);return;}completed++;if(completed%20===0||completed===files.length)console.log(`Uploaded ${completed}/${files.length}`);
 }}
-await Promise.all(Array.from({length:2},worker));if(failed){console.error('Upload stopped. Re-run to retry; no remote objects were deleted.');process.exitCode=1;}
+await Promise.all(Array.from({length:8},worker));if(failed){console.error('Upload stopped. Re-run to retry; no remote objects were deleted.');process.exitCode=1;}
+
