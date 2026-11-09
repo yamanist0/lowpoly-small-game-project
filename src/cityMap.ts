@@ -29,6 +29,8 @@ export class CityMap {
   this.overlay.addEventListener('wheel',e=>{e.preventDefault();e.stopPropagation();this.scale=Math.max(.15,Math.min(2,this.scale*Math.exp(-e.deltaY*.001)));this.draw();},{passive:false});
   window.addEventListener('resize',()=>{if(this.isOpen)this.draw();});
  }
+ snapshot(){return [...this.explored];}
+ restore(value:unknown){if(!Array.isArray(value))return;for(const item of value.slice(0,5000)){if(typeof item!=='string'||!/^[-]?\d+,[-]?\d+$/.test(item))continue;const [x,z]=item.split(',').map(Number),ix=Math.round((x+.5)*CELL/CITY),iz=Math.round((z+.5)*CELL/CITY);if(districtIndex(ix,iz)<0)continue;this.explored.add(item);this.discovered.add(`${ix},${iz}`);}this.dirty=true;}
  get isOpen(){return !this.overlay.hidden;}
  toggle(){if(this.isOpen)this.close();else this.open();}
  open(){this.overlay.hidden=false;this.center={...this.player};this.draw();this.overlay.querySelector<HTMLButtonElement>('.city-map-close')!.focus();}

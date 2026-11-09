@@ -1260,7 +1260,7 @@ const cityOwner=(ix:number,iz:number)=>online.cities.get(`${ix},${iz}`);
 empire.restore(saved.crews,(ix,iz)=>cityOwner(ix,iz)?.ownerId===session.player.id);
 for(const city of online.cities.values())if(city.ownerId===session.player.id&&!empire.owns(city.ix,city.iz))empire.claim(city.ix,city.iz,()=>true);
 let saving:Promise<void>=Promise.resolve();
-function saveProgress(){const money=weapons.money,inventory={weapons:[...weapons.owned],lockpicks:weapons.lockpicks,upgrades:{...weapons.abilities.levels},crews:empire.snapshot()};saving=saving.catch(()=>{}).then(()=>online.save(money,inventory)).then(()=>{});return saving;}
+function saveProgress(){const money=weapons.money,inventory={weapons:[...weapons.owned],lockpicks:weapons.lockpicks,upgrades:{...weapons.abilities.levels},crews:empire.snapshot(),explored:cityMap.snapshot()};saving=saving.catch(()=>{}).then(()=>online.save(money,inventory)).then(()=>{});return saving;}
 const management=new CityManagement(empire,{location:()=>{const p=player.translation();return cityAt(p.x/size,p.z/size);},money:()=>weapons.money,spend:amount=>{if(weapons.money<amount)return false;weapons.removeMoney(amount);return true;},owner:(ix,iz)=>cityOwner(ix,iz)?.ownerName??null,claim:async(ix,iz)=>{await saveProgress();const result=await online.claim(ix,iz);weapons.money=result.money;empire.claim(ix,iz,()=>true);await saveProgress();},onClose:()=>{void saveProgress().catch(console.error);}});
 const cityMap=new CityMap({isRoad:effectiveRoadAt,isWater:(x,z)=>!!waterMask(x,z),isUrban:(x,z)=>cityAt(x,z).urban,isOwned:(ix,iz)=>empire.owns(ix,iz),owner:(ix,iz)=>{const owner=cityOwner(ix,iz);return owner?{name:owner.ownerName,mine:owner.ownerId===session.player.id}:null;},onManage:()=>management.open()});
 const remotePlayers=new Map<string,{visual:ReturnType<typeof agents.createPlayer>;x:number;z:number;heading:number;label:THREE.Sprite}>();
@@ -1268,7 +1268,7 @@ function updateRemote(p:import('./online').OnlinePlayer){let remote=remotePlayer
 online.onPlayer=updateRemote;online.onLeave=id=>{const remote=remotePlayers.get(id);if(remote){scene.remove(remote.visual.root);remote.label.material.map?.dispose();remote.label.material.dispose();remotePlayers.delete(id);}};for(const p of online.players.values())updateRemote(p);
 let nextOnlineSave=performance.now()+10000;
 
-cityMap.updatePlayer(start.x,start.z);
+cityMap.restore(saved.explored);cityMap.updatePlayer(start.x,start.z);
 
 weapons.onMoneyChange=amount=>hud.setMoney(amount);
 const initialZoom=25/2.5,minZoom=initialZoom*.7,maxZoom=initialZoom*1.3;
